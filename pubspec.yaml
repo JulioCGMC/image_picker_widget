@@ -1,7 +1,6 @@
 name: image_picker_widget
 description: Flutter package to integrate image_picker with a simple Flutter widget, allowing you to edit an image without any problems with design code development.
 version: 1.0.0
-author: JulioCGMC <julio.cesar.g.c125@gmail.com>
 homepage: https://github.com/JulioCGMC/image_picker_widget
 
 environment:
