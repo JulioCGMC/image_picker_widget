@@ -24,8 +24,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-
-
   final String title;
 
   @override
@@ -41,16 +39,16 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: ImagePickerWidget(
-          diameter: 180,
-          initialImage: "https://strattonapps.com/wp-content/uploads/2020/02/flutter-logo-5086DD11C5-seeklogo.com_.png",
-          shape: ImagePickerWidgetShape.circle,
-          isEditable: true,
-          onChange: (File file) {
-            print("I changed the file to: ${file.path}");
-          },
-        )
-      ),
+          child: ImagePickerWidget(
+        diameter: 180,
+        initialImage:
+            "https://strattonapps.com/wp-content/uploads/2020/02/flutter-logo-5086DD11C5-seeklogo.com_.png",
+        shape: ImagePickerWidgetShape.circle,
+        isEditable: true,
+        onChange: (File file) {
+          print("I changed the file to: ${file.path}");
+        },
+      )),
     );
   }
 }

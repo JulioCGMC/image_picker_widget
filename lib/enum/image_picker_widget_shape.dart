@@ -1,3 +1,1 @@
-enum ImagePickerWidgetShape {
-  square, circle
-}
+enum ImagePickerWidgetShape { square, circle }
