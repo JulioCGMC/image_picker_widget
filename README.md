@@ -2,29 +2,31 @@
 
 A new Flutter package to integrate image_picker with a simple Flutter widget, allowing you to edit an image without any problems with design code development
 
-| Preview | PageView |
+| Preview | Modal image type picker |
 |---------|----------|
-|![FanBottomNavyBar Gif](navy.gif "BottomNavyBar") | ![Fix Gif](fix.gif "Fix") |
+|![First view](img/first.png "BottomNavyBar") | ![Modal image type picker](img/second.png "Fix") |
+
+## Parameter (Required)
+-  `diameter` - The diameter of the container in which the image is contained.
+
+## Parameter (Optional)
+- `initialImage` - The initial image to be displaied, can be a  `File` or a external url (`String`)
+- `isEditable` - Checks whether the image can be changed
+- `onChange` - Case the image can be changed, this function will be called after the change.
 
 ## Customization (Optional)
 
-### BottomNavyBar
-- `iconSize` - the item icon's size
-- `items` - navigation items, required more than one item and less than six
-- `selectedIndex` - the current item index. Use this to change the selected item. Default to zero
-- `onItemSelected` - required to listen when a item is tapped it provide the selected item's index
-- `backgroundColor` - the navigation bar's background color
-- `showElevation` - if false the appBar's elevation will be removed
-- `mainAxisAlignment` - use this property to change the horizontal alignment of the items. It is mostly used when you have ony two items and you want to center the items
-- `curve` - param to customize the item change's animation
-- `containerHeight` - changes the Navigation Bar's height
- 
-### BottomNavyBarItem
-- `icon` - the icon of this item
-- `title` - the text that will appear next to the icon when this item is selected
-- `activeColor` - the active item's background and text color
-- `inactiveColor` - the inactive item's icon color
-- `textAlign` - property to change the alignment of the item title
+### Image Picker Widget
+- `shape` - The shape of the widget [`square` or `circle`]
+- `backgroundColor` - The background of the widget [default to `Colors.grey[500]`]
+- `editIcon` - The widget that references the possibility of editing
+
+### Modal image type picker
+- `modalTitle` - The title of the widget [default to `Text` > "Select:"]
+- `modalCameraIcon` - The camera icon that selects the camera [default to `Icons.camera`]
+- `modalCameraText` - The camera label that indicates to selects the camera [defaults to `Text` > "camera"]
+- `modalGalleryIcon` - The gallery icon that selects the gallery [default to `Icons.collections`]
+- `modalGalleryText` - The gallery label that indicates to selects the gallery [defaults to `Text` > "gallery"]
 
 ## Getting Started
 
@@ -33,7 +35,8 @@ Add the dependency in `pubspec.yaml`:
 ```yaml
 dependencies:
   ...
-  bottom_navy_bar: ^5.6.0
+  # Design
+  image_picker_widget: ^1.0.1
 ```
 
 ## Basic Usage
@@ -41,103 +44,13 @@ dependencies:
 Adding the widget
 
 ```dart
-bottomNavigationBar: BottomNavyBar(
-   selectedIndex: _selectedIndex,
-   showElevation: true, // use this to remove appBar's elevation
-   onItemSelected: (index) => setState(() {
-              _selectedIndex = index;
-              _pageController.animateToPage(index,
-                  duration: Duration(milliseconds: 300), curve: Curves.ease);
-    }),
-   items: [
-     BottomNavyBarItem(
-       icon: Icon(Icons.apps),
-       title: Text('Home'),
-       activeColor: Colors.red,
-     ),
-     BottomNavyBarItem(
-         icon: Icon(Icons.people),
-         title: Text('Users'),
-         activeColor: Colors.purpleAccent
-     ),
-     BottomNavyBarItem(
-         icon: Icon(Icons.message),
-         title: Text('Messages'),
-         activeColor: Colors.pink
-     ),
-     BottomNavyBarItem(
-         icon: Icon(Icons.settings),
-         title: Text('Settings'),
-         activeColor: Colors.blue
-     ),
-   ],
+..child: ImagePickerWidget(
+    diameter: 180,
+    // initialImage: "https://strattonapps.com/wp-content/uploads/2020/02/flutter-logo-5086DD11C5-seeklogo.com_.png",
+    shape: ImagePickerWidgetShape.circle, // ImagePickerWidgetShape.square
+    isEditable: true,
+    onChange: (File file) {
+        print("I changed the file to: ${file.path}");
+    },
 )
-```
-
-## Use with PageView and PageController
-
-```dart
-class _MyHomePageState extends State<MyHomePage> {
-
-  int _currentIndex = 0;
-  PageController _pageController;
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Bottom Nav Bar")),
-      body: SizedBox.expand(
-        child: PageView(
-          controller: _pageController,
-          onPageChanged: (index) {
-            setState(() => _currentIndex = index);
-          },
-          children: <Widget>[
-            Container(color: Colors.blueGrey,),
-            Container(color: Colors.red,),
-            Container(color: Colors.green,),
-            Container(color: Colors.blue,),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavyBar(
-        selectedIndex: _currentIndex,
-        onItemSelected: (index) {
-          setState(() => _currentIndex = index);
-          _pageController.jumpToPage(index);
-        },
-        items: <BottomNavyBarItem>[
-          BottomNavyBarItem(
-            title: Text('Item One'),
-            icon: Icon(Icons.home)
-          ),
-          BottomNavyBarItem(
-            title: Text('Item Two'),
-            icon: Icon(Icons.apps)
-          ),
-          BottomNavyBarItem(
-            title: Text('Item Three'),
-            icon: Icon(Icons.chat_bubble)
-          ),
-          BottomNavyBarItem(
-            title: Text('Item Four'),
-            icon: Icon(Icons.settings)
-          ),
-        ],
-      ),
-    );
-  }
-}
 ```

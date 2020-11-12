@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker_widget/enum/image_picker_widget_shape.dart';
 import 'package:image_picker_widget/image_picker_widget.dart';
@@ -44,6 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
           initialImage: "https://strattonapps.com/wp-content/uploads/2020/02/flutter-logo-5086DD11C5-seeklogo.com_.png",
           shape: ImagePickerWidgetShape.circle,
           isEditable: true,
+          onChange: (File file) {
+            print("I changed the file to: ${file.path}");
+          },
         )
       ),
     );

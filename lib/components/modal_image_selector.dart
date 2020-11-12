@@ -68,7 +68,7 @@ class ModalImageSelector extends StatelessWidget {
                           color: Theme.of(context).primaryColor
                         ),
                         modalCameraText ?? Text(
-                          "câmera",
+                          "camera",
                           style: Theme.of(context).textTheme.overline
                         )
                       ],
