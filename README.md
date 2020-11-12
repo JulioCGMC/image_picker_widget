@@ -80,3 +80,7 @@ Adding the widget
     },
 )
 ```
+
+## Issues
+
+Please if you see any issues, bugs, or feature requests, send to me in: [GitHub issue](https://github.com/JulioCGMC/image_picker_widget/issues).
