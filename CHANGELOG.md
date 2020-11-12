@@ -1,3 +1,7 @@
+## [1.0.2] - Update Readme
+
+* Update Readme to add issue replier
+
 ## [1.0.1] - Update Readme
 
 * Update Readme to add an exemple and specs to the package
