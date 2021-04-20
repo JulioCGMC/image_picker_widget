@@ -47,7 +47,7 @@ ______________
 -  `diameter` - The diameter of the container in which the image is contained.
 
 ## Parameter (Optional)
-- `initialImage` - The initial image to be displaied, can be a  `File` or a external url (`String`)
+- `initialImage` - The initial image to be displaied, can be an `ImageProvider`, `File` or a `external url (String)`
 - `isEditable` - Checks whether the image can be changed
 - `onChange` - Case the image can be changed, this function will be called after the change.
 

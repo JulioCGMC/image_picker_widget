@@ -15,7 +15,8 @@ class ImagePickerWidget extends StatefulWidget {
   /// The shape of the widget [square or circle]
   final ImagePickerWidgetShape shape;
 
-  /// The initial image to be displaied, can be a  `File` or a external url
+  /// The initial image to be displaied, can be an `ImageProvider`, 
+  /// `File` or a `external url (String)`
   final dynamic initialImage;
 
   /// Checks whether the image can be changed
@@ -45,7 +46,10 @@ class ImagePickerWidget extends StatefulWidget {
       this.modalGalleryText,
       this.modalCameraIcon,
       this.modalGalleryIcon})
-      : super(key: key);
+      : assert(
+        (initialImage is String || initialImage is File || initialImage is ImageProvider),
+        'initialImage must be an String, ImageProvider, or File'
+      ), super(key: key);
 
   @override
   _ImagePickerWidgetState createState() =>
@@ -67,7 +71,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
           color: widget.backgroundColor ?? Colors.grey[500],
           borderRadius: BorderRadius.all(
               (widget.shape == ImagePickerWidgetShape.circle
-                  ? Radius.circular(128)
+                  ? Radius.circular(999)
                   : Radius.circular(8))),
           image: _image()),
     ));
@@ -121,6 +125,9 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
 
   /// Analysis if the image is a `File`, an external `url` or null
   DecorationImage _image() {
+    if (image is ImageProvider) {
+      return DecorationImage(image: image, fit: BoxFit.cover);
+    }
     if (image is File)
       return DecorationImage(image: FileImage(image), fit: BoxFit.cover);
     else if (image != null)
