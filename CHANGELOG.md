@@ -1,3 +1,11 @@
+## [2.0.1] - Ignore if initialImage is null or empty
+
+* Now initialImage is ignores if is empty or null for Null-safety
+## [2.0.0] - Null safety migration
+
+* Migrate to nullsafety
+* Code format changed to be more efficient in importing
+
 ## [1.0.4] - Ignore if initialImage is null or empty
 
 * Now initialImage is ignores if is empty or null

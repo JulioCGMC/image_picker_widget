@@ -1,15 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+part of image_picker_widget;
 
 class ModalImageSelector extends StatelessWidget {
-  final Widget modalTitle;
-  final Widget modalCameraText;
-  final Widget modalGalleryText;
-  final IconData modalCameraIcon;
-  final IconData modalGalleryIcon;
+  final Widget? modalTitle;
+  final Widget? modalCameraText;
+  final Widget? modalGalleryText;
+  final IconData? modalCameraIcon;
+  final IconData? modalGalleryIcon;
 
   const ModalImageSelector(
-      {Key key,
+      {Key? key,
       this.modalTitle,
       this.modalCameraText,
       this.modalGalleryText,

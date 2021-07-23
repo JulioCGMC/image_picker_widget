@@ -1,5 +1,8 @@
 # image_picker_widget
 
+[![pub package](https://img.shields.io/pub/v/image_picker_widget.svg)](https://pub.dev/packages/image_picker_widget)
+
+
 A new Flutter package to integrate image_picker with a simple Flutter widget, allowing you to edit an image without any problems with design code development
 
 | Preview | Modal image type picker |
@@ -14,7 +17,7 @@ Add the dependency in `pubspec.yaml`:
 dependencies:
   ...
   # Design
-  image_picker_widget: ^1.0.1
+  image_picker_widget: '>=2.0.0 <3.0.0 /// For pre null-safety, use version 1.0.3'
 ```
 
 A Flutter plugin for iOS and Android for picking images from the image library,

@@ -3,10 +3,11 @@ library image_picker_widget;
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image_picker_widget/components/modal_image_selector.dart';
-import 'package:image_picker_widget/functions/change_image.dart';
+import 'package:image_picker/image_picker.dart';
 
-import 'enum/image_picker_widget_shape.dart';
+part 'components/modal_image_selector.dart';
+part 'enum/image_picker_widget_shape.dart';
+part 'functions/change_image.dart';
 
 class ImagePickerWidget extends StatefulWidget {
   /// The diameter of the container in which the image is contained
@@ -15,7 +16,7 @@ class ImagePickerWidget extends StatefulWidget {
   /// The shape of the widget [square or circle]
   final ImagePickerWidgetShape shape;
 
-  /// The initial image to be displaied, can be an `ImageProvider`, 
+  /// The initial image to be displaied, can be an `ImageProvider`,
   /// `File` or a `external url (String)`
   final dynamic initialImage;
 
@@ -23,18 +24,18 @@ class ImagePickerWidget extends StatefulWidget {
   final bool isEditable;
 
   /// Case the image can be changed, this function will be called after the change
-  final void Function(File) onChange;
-  final Color backgroundColor;
-  final Widget editIcon;
-  final Widget modalTitle;
-  final Widget modalCameraText;
-  final Widget modalGalleryText;
-  final IconData modalCameraIcon;
-  final IconData modalGalleryIcon;
+  final void Function(File)? onChange;
+  final Color? backgroundColor;
+  final Widget? editIcon;
+  final Widget? modalTitle;
+  final Widget? modalCameraText;
+  final Widget? modalGalleryText;
+  final IconData? modalCameraIcon;
+  final IconData? modalGalleryIcon;
 
   const ImagePickerWidget(
-      {Key key,
-      @required this.diameter,
+      {Key? key,
+      required this.diameter,
       this.initialImage,
       this.isEditable = false,
       this.onChange,
@@ -47,9 +48,12 @@ class ImagePickerWidget extends StatefulWidget {
       this.modalCameraIcon,
       this.modalGalleryIcon})
       : assert(
-        (initialImage is String || initialImage is File || initialImage is ImageProvider || initialImage == null),
-        'initialImage must be an String, ImageProvider, or File'
-      ), super(key: key);
+            (initialImage is String ||
+                initialImage is File ||
+                initialImage is ImageProvider || 
+                initialImage == null),
+            'initialImage must be an String, ImageProvider, or File'),
+        super(key: key);
 
   @override
   _ImagePickerWidgetState createState() =>
@@ -77,7 +81,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
     ));
   }
 
-  Widget _editMode({@required Widget child}) {
+  Widget _editMode({required Widget child}) {
     if (widget.isEditable)
       return GestureDetector(
         onTap: () {
@@ -91,7 +95,9 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
                       modalGalleryIcon: widget.modalGalleryIcon))
               .then((file) {
             if (file != null) {
-              widget.onChange(file);
+              if (widget.onChange != null) {
+                widget.onChange!(file);
+              }
               setState(() {
                 image = file;
               });
@@ -124,14 +130,14 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
   }
 
   /// Analysis if the image is a `File`, an external `url` or null
-  DecorationImage _image() {
+  DecorationImage? _image() {
     if (image is ImageProvider) {
       return DecorationImage(image: image, fit: BoxFit.cover);
     }
     if (image is File)
       return DecorationImage(image: FileImage(image), fit: BoxFit.cover);
     else if (image != null && image.toString().isNotEmpty)
-      return DecorationImage(image: NetworkImage(image), fit: BoxFit.cover);
+      return DecorationImage(image: NetworkImage(image.toString()), fit: BoxFit.cover);
     return null;
   }
 }
