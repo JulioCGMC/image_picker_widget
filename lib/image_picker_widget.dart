@@ -47,7 +47,7 @@ class ImagePickerWidget extends StatefulWidget {
       this.modalCameraIcon,
       this.modalGalleryIcon})
       : assert(
-        (initialImage is String || initialImage is File || initialImage is ImageProvider),
+        (initialImage is String || initialImage is File || initialImage is ImageProvider || initialImage == null),
         'initialImage must be an String, ImageProvider, or File'
       ), super(key: key);
 
@@ -130,7 +130,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
     }
     if (image is File)
       return DecorationImage(image: FileImage(image), fit: BoxFit.cover);
-    else if (image != null)
+    else if (image != null && image.toString().isNotEmpty)
       return DecorationImage(image: NetworkImage(image), fit: BoxFit.cover);
     return null;
   }

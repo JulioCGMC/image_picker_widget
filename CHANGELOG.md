@@ -1,3 +1,7 @@
+## [1.0.4] - Ignore if initialImage is null or empty
+
+* Now initialImage is ignores if is empty or null
+
 ## [1.0.3] - Update variable type
 
 * Now initialImage accepts not only File and String, but also ImageProvider type
