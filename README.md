@@ -66,6 +66,7 @@ ______________
 ## Parameter (Optional)
 - `initialImage` - The initial image to be displaied, can be an `ImageProvider`, `File` or a `external url (String)`
 - `isEditable` - Checks whether the image can be changed
+- `shouldCrop` - defines if the image can be edited and/or croped with the defined values [bellow](#image-cropping) default to **false**.
 - `onChange` - Case the image can be changed, this function will be called after the change.
 
 ## Customization (Optional)
@@ -81,6 +82,17 @@ ______________
 - `modalCameraText` - The camera label that indicates to selects the camera [defaults to `Text` > "camera"]
 - `modalGalleryIcon` - The gallery icon that selects the gallery [default to `Icons.collections`]
 - `modalGalleryText` - The gallery label that indicates to selects the gallery [defaults to `Text` > "gallery"]
+
+### Image Cropping
+- `maxWidth` - maximum cropped image width.
+- `maxHeight` - maximum cropped image height.
+- `aspectRatio` - controls the aspect ratio of crop bounds. If this values is set, the cropper is locked and user can't change the aspect ratio of crop bounds.
+- `aspectRatioPresets` - controls the list of aspect ratios in the crop menu view. In Android, you can set the initialized aspect ratio when starting the cropper by setting the value of `AndroidUiSettings.initAspectRatio`.
+- `cropStyle` - controls the style of crop bounds, it can be rectangle or circle style (default is `CropStyle.rectangle`).
+- `compressFormat` - the format of result image, png or jpg (default is ImageCompressFormat.jpg).
+- `compressQuality` - the value [0 - 100] to control the quality of image compression.
+- `androidUiSettings` - controls UI customization on Android. See [Android customization](https://pub.dev/packages/image_cropper#android).
+- `iosUiSettings` - controls UI customization on iOS. See [iOS customization](https://pub.dev/packages/image_cropper#ios).
 
 ## Basic Usage
 

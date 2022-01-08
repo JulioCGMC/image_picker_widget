@@ -3,10 +3,13 @@ library image_picker_widget;
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 part 'components/modal_image_selector.dart';
 part 'enum/image_picker_widget_shape.dart';
+part 'models/cropped_image_options.dart';
+part 'functions/crop_image.dart';
 part 'functions/change_image.dart';
 
 class ImagePickerWidget extends StatefulWidget {
@@ -27,17 +30,25 @@ class ImagePickerWidget extends StatefulWidget {
   final void Function(File)? onChange;
   final Color? backgroundColor;
   final Widget? editIcon;
+  
+  // TODO: Create Modal class for clean code
   final Widget? modalTitle;
   final Widget? modalCameraText;
   final Widget? modalGalleryText;
   final IconData? modalCameraIcon;
   final IconData? modalGalleryIcon;
 
+  /// Defines if the image can be edited
+  final bool shouldCrop;
+  /// Image editing params
+  final CroppedImageOptions? croppedImageOptions;
+
   const ImagePickerWidget(
       {Key? key,
       required this.diameter,
       this.initialImage,
       this.isEditable = false,
+      this.shouldCrop = false,
       this.onChange,
       this.backgroundColor,
       this.shape = ImagePickerWidgetShape.circle,
@@ -46,8 +57,9 @@ class ImagePickerWidget extends StatefulWidget {
       this.modalCameraText,
       this.modalGalleryText,
       this.modalCameraIcon,
-      this.modalGalleryIcon})
-      : assert(
+      this.modalGalleryIcon, 
+      this.croppedImageOptions
+    }) : assert(
             (initialImage is String ||
                 initialImage is File ||
                 initialImage is ImageProvider || 
@@ -85,14 +97,17 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
     if (widget.isEditable)
       return GestureDetector(
         onTap: () {
+          final modal = ModalImageSelector(
+            modalTitle: widget.modalTitle,
+            modalCameraText: widget.modalCameraText,
+            modalGalleryText: widget.modalGalleryText,
+            modalCameraIcon: widget.modalCameraIcon,
+            modalGalleryIcon: widget.modalGalleryIcon);
           changeImage(
                   context,
-                  ModalImageSelector(
-                      modalTitle: widget.modalTitle,
-                      modalCameraText: widget.modalCameraText,
-                      modalGalleryText: widget.modalGalleryText,
-                      modalCameraIcon: widget.modalCameraIcon,
-                      modalGalleryIcon: widget.modalGalleryIcon))
+                  modal,
+                  widget.shouldCrop,
+                  widget.croppedImageOptions)
               .then((file) {
             if (file != null) {
               if (widget.onChange != null) {
