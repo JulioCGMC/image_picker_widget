@@ -17,7 +17,8 @@ Add the dependency in `pubspec.yaml`:
 dependencies:
   ...
   # Design
-  image_picker_widget: '>=2.0.0 <3.0.0 /// For pre null-safety, use version 1.0.3'
+  image_picker_widget: '>=2.0.0 <3.0.0 
+  # For pre null-safety, use version 1.0.3'
 ```
 
 A Flutter plugin for iOS and Android for picking images from the image library,
@@ -25,7 +26,7 @@ and taking new pictures with the camera.
 
 ## Installation
 
-Since this package requires `image_picker`, you need to add this requirements bellow.
+Since this package requires `image_picker`, and `image_cropper` you need to add this requirements bellow.
 
 ### iOS
 
@@ -37,12 +38,25 @@ Add the following keys to your _Info.plist_ file, located in `<project root>/ios
 
 ### Android
 
-#### API 29+
+#### [Image Picker](https://pub.dev/packages/image_picker#android) config:
+
 No configuration required - the plugin should work out of the box.
 
-#### API < 29
+It is no longer required to add android:requestLegacyExternalStorage="true" as an attribute to the <application> tag in AndroidManifest.xml, as image_picker has been updated to make use of scoped storage.
 
-Add `android:requestLegacyExternalStorage="true"` as an attribute to the `<application>` tag in AndroidManifest.xml. The [attribute](https://developer.android.com/training/data-storage/compatibility) is `false` by default on apps targeting Android Q. 
+#### [Image Cropper](https://pub.dev/packages/image_cropper#android) config:
+
+- Add UCropActivity into your AndroidManifest.xml
+
+````xml
+<activity
+    android:name="com.yalantis.ucrop.UCropActivity"
+    android:screenOrientation="portrait"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+````
+
+#### Note:
+From v1.2.0, you need to migrate your android project to v2 embedding ([detail](https://github.com/flutter/flutter/wiki/Upgrading-pre-1.12-Android-projects))
 
 ______________
 
