@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   image_picker: ">=0.8.2 <1.0.0"
-  image_cropper: 1.4.1
+  image_cropper: ^1.4.1
   flutter:
     sdk: flutter
 
