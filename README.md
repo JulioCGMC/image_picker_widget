@@ -61,38 +61,50 @@ From v1.2.0, you need to migrate your android project to v2 embedding ([detail](
 ______________
 
 ## Parameter (Required)
--  `diameter` - The diameter of the container in which the image is contained.
+| Property | Description | Type |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------|-----------------------|
+| `diameter` | The diameter of the container in which the image is contained. | double   |
 
 ## Parameter (Optional)
-- `initialImage` - The initial image to be displaied, can be an `ImageProvider`, `File` or a `external url (String)`
-- `isEditable` - Checks whether the image can be changed
-- `shouldCrop` - defines if the image can be edited and/or croped with the defined values [bellow](#image-cropping) default to **false**.
-- `onChange` - Case the image can be changed, this function will be called after the change.
+| Property | Description | Type |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------|-----------------------|
+| `initialImage` | The initial image to be displaied, can be an `ImageProvider`, `File` or a `external url (String)` | dynamic |
+| `isEditable` | Checks whether the image can be changed | bool   |
+| `shouldCrop` | defines if the image can be edited and/or croped with the defined values [bellow](#image-cropping) default to **false**. | bool   |
+| `onChange` | Case the image can be changed, this function will be called after the change. | void Function(File)   |
 
 ## Customization (Optional)
 
 ### Image Picker Widget
-- `shape` - The shape of the widget [`square` or `circle`]
-- `backgroundColor` - The background of the widget [default to `Colors.grey[500]`]
-- `editIcon` - The widget that references the possibility of editing
+| Property | Description | Type |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------|-----------------------|
+| `shape` | The shape of the widget [`square` or `circle`] | ImagePickerWidgetShape |
+| `backgroundColor` | The background of the widget [default to `Colors.grey[500]`] | Color |
+| `editIcon` | The widget that references the possibility of editing | Widget |
 
 ### Modal image type picker
-- `modalTitle` - The title of the widget [default to `Text` > "Select:"]
-- `modalCameraIcon` - The camera icon that selects the camera [default to `Icons.camera`]
-- `modalCameraText` - The camera label that indicates to selects the camera [defaults to `Text` > "camera"]
-- `modalGalleryIcon` - The gallery icon that selects the gallery [default to `Icons.collections`]
-- `modalGalleryText` - The gallery label that indicates to selects the gallery [defaults to `Text` > "gallery"]
+| Property | Description | Type |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------|-----------------------|
+| `modalTitle` | The title of the widget [default to `Text` > "Select:"] | Widget |
+| `modalCameraIcon` | The camera icon that selects the camera [default to `Icons.camera`] | IconData
+IconData |
+| `modalCameraText` | The camera label that indicates to selects the camera [defaults to `Text` > "camera"] | Widget |
+| `modalGalleryIcon` | The gallery icon that selects the gallery [default to `Icons.collections`] | IconData
+IconData |
+| `modalGalleryText` | The gallery label that indicates to selects the gallery [defaults to `Text` > "gallery"] | Widget |
 
 ### Image Cropping
-- `maxWidth` - maximum cropped image width.
-- `maxHeight` - maximum cropped image height.
-- `aspectRatio` - controls the aspect ratio of crop bounds. If this values is set, the cropper is locked and user can't change the aspect ratio of crop bounds.
-- `aspectRatioPresets` - controls the list of aspect ratios in the crop menu view. In Android, you can set the initialized aspect ratio when starting the cropper by setting the value of `AndroidUiSettings.initAspectRatio`.
-- `cropStyle` - controls the style of crop bounds, it can be rectangle or circle style (default is `CropStyle.rectangle`).
-- `compressFormat` - the format of result image, png or jpg (default is ImageCompressFormat.jpg).
-- `compressQuality` - the value [0 - 100] to control the quality of image compression.
-- `androidUiSettings` - controls UI customization on Android. See [Android customization](https://pub.dev/packages/image_cropper#android).
-- `iosUiSettings` - controls UI customization on iOS. See [iOS customization](https://pub.dev/packages/image_cropper#ios).
+| Property | Description | Type |
+|-----------------------------|-------------------------------------------------------------------------------------------------------------|-----------------------|
+| `maxWidth` | maximum cropped image width. | int |
+| `maxHeight` | maximum cropped image height. | int |
+| `aspectRatio` | controls the aspect ratio of crop bounds. If this values is set, the cropper is locked and user can't change the aspect ratio of crop bounds. | CropAspectRatio |
+| `aspectRatioPresets` | controls the list of aspect ratios in the crop menu view. In Android, you can set the initialized aspect ratio when starting the cropper by setting the value of `AndroidUiSettings.initAspectRatio`. | List |
+| `cropStyle` | controls the style of crop bounds, it can be rectangle or circle style (default is `CropStyle.rectangle`). | CropStyle |
+| `compressFormat` | the format of result image, png or jpg (default is ImageCompressFormat.jpg). | ImageCompressFormat |
+| `compressQuality` | the value [0 - 100] to control the quality of image compression. | int |
+| `androidUiSettings` | controls UI customization on Android. See [Android customization](https://pub.dev/packages/image_cropper#android). | AndroidUiSettings |
+| `iosUiSettings` | controls UI customization on iOS. See [iOS customization](https://pub.dev/packages/image_cropper#ios). | IOSUiSettings |
 
 ## Basic Usage
 
