@@ -45,6 +45,9 @@ class _MyHomePageState extends State<MyHomePage> {
         shape: ImagePickerWidgetShape.circle,
         isEditable: true,
         shouldCrop: true,
+        imagePickerOptions: ImagePickerOptions(
+          imageQuality: 65
+        ),
         onChange: (File file) {
           print("I changed the file to: ${file.path}");
         },

@@ -1,3 +1,5 @@
+## [2.0.3] - Add image picker new options for the newer OS versions
+
 ## [2.0.2] - Add croping and simple image editions to image picker
 
 ## [2.0.1] - Ignore if initialImage is null or empty

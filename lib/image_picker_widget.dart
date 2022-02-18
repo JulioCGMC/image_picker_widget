@@ -9,6 +9,7 @@ import 'package:image_picker/image_picker.dart';
 part 'components/modal_image_selector.dart';
 part 'enum/image_picker_widget_shape.dart';
 part 'models/cropped_image_options.dart';
+part 'models/image_picker_options.dart';
 part 'functions/crop_image.dart';
 part 'functions/change_image.dart';
 
@@ -38,6 +39,9 @@ class ImagePickerWidget extends StatefulWidget {
   final IconData? modalCameraIcon;
   final IconData? modalGalleryIcon;
 
+
+  /// Image picker params
+  final ImagePickerOptions? imagePickerOptions;
   /// Defines if the image can be edited
   final bool shouldCrop;
   /// Image editing params
@@ -58,7 +62,8 @@ class ImagePickerWidget extends StatefulWidget {
       this.modalGalleryText,
       this.modalCameraIcon,
       this.modalGalleryIcon, 
-      this.croppedImageOptions
+      this.croppedImageOptions,
+      this.imagePickerOptions
     }) : assert(
             (initialImage is String ||
                 initialImage is File ||
@@ -107,7 +112,8 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
                   context,
                   modal,
                   widget.shouldCrop,
-                  widget.croppedImageOptions)
+                  widget.croppedImageOptions,
+                  widget.imagePickerOptions)
               .then((file) {
             if (file != null) {
               if (widget.onChange != null) {
