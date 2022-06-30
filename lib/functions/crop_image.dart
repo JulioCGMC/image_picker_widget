@@ -3,12 +3,11 @@ part of image_picker_widget;
 /// Alters the actual image
 Future<File?> cropImage(XFile file, CroppedImageOptions? croppedImageOptions) async {
   File? response;
-  print('Aqui');
   try {
     if (croppedImageOptions == null) {
       croppedImageOptions = CroppedImageOptions();
     }
-    response = await ImageCropper.cropImage(
+    CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: file.path,
       maxWidth: croppedImageOptions.maxWidth,
       maxHeight: croppedImageOptions.maxHeight,
@@ -17,9 +16,16 @@ Future<File?> cropImage(XFile file, CroppedImageOptions? croppedImageOptions) as
       cropStyle: croppedImageOptions.cropStyle,
       compressFormat: croppedImageOptions.compressFormat,
       compressQuality: croppedImageOptions.compressQuality,
-      androidUiSettings: croppedImageOptions.androidUiSettings,
-      iosUiSettings: croppedImageOptions.iosUiSettings,
+      uiSettings: [
+        croppedImageOptions.androidUiSettings,
+        croppedImageOptions.iosUiSettings
+      ].where((w) => w != null).toList().cast<PlatformUiSettings>(),
+      // androidUiSettings: croppedImageOptions.androidUiSettings,
+      // iosUiSettings: croppedImageOptions.iosUiSettings,
     );
+    if (croppedFile != null) {
+      response = File(croppedFile.path);
+    }
   } catch (e) {
     response = File(file.path);
   }

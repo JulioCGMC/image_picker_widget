@@ -1,3 +1,5 @@
+## [2.1.0] - Atualização para Flutter 3
+
 ## [2.0.3] - Add image picker new options for the newer OS versions
 
 ## [2.0.2] - Add croping and simple image editions to image picker
