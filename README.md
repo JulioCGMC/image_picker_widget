@@ -81,6 +81,7 @@ ______________
 | `shape` | The shape of the widget [`square` or `circle`] | ImagePickerWidgetShape |
 | `backgroundColor` | The background of the widget [default to `Colors.grey[500]`] | Color |
 | `editIcon` | The widget that references the possibility of editing | Widget |
+| `iconAlignment` | Alignment option for `editIcon` | AlignmentGeometry |
 
 ### Modal image type picker
 | Property | Description | Type |

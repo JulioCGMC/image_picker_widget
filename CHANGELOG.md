@@ -1,4 +1,6 @@
-## [2.1.0] - Atualização para Flutter 3
+## [2.1.1] - Alignment option for `editIcon`
+
+## [2.1.0] - Update to Flutter 3
 
 ## [2.0.3] - Add image picker new options for the newer OS versions
 

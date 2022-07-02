@@ -31,6 +31,7 @@ class ImagePickerWidget extends StatefulWidget {
   final void Function(File)? onChange;
   final Color? backgroundColor;
   final Widget? editIcon;
+  final AlignmentGeometry? iconAlignment;
   
   // TODO: Create Modal class for clean code
   final Widget? modalTitle;
@@ -56,6 +57,7 @@ class ImagePickerWidget extends StatefulWidget {
       this.onChange,
       this.backgroundColor,
       this.shape = ImagePickerWidgetShape.circle,
+      this.iconAlignment,
       this.editIcon,
       this.modalTitle,
       this.modalCameraText,
@@ -132,7 +134,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
             children: [
               child,
               Align(
-                alignment: Alignment.bottomLeft,
+                alignment: widget.iconAlignment ?? Alignment.bottomLeft,
                 child: widget.editIcon ??
                     Card(
                       shape: CircleBorder(),
