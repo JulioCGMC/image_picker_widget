@@ -91,10 +91,33 @@ ______________
 | `modalOptions.title` | The title of the widget [default to `Text` > "Select:"] | Widget |
 | `modalOptions.cameraIcon` | The camera icon that selects the camera [default to `Icons.camera`] | IconData
 IconData |
-| `modalOptions.cameraText` | The camera label that indicates to selects the camera [defaults to `Text` > "camera"] | Widget |
-| `modalOptions.galleryIcon` | The gallery icon that selects the gallery [default to `Icons.collections`] | IconData
+| `modalOptions.cameraText` | The camera label that indicates to select the camera [defaults to `Text` > "camera"] | Widget |
+| `modalOptions.cameraSize` | The camera icon size that indicates to select the camera [defaults to `40`] | double |
+| `modalOptions.cameraColor` | The camera icon color that indicates to select the camera [defaults to `primaryColor`] | Color |
+| `modalOptions.galleryIcon` | The gallery icon that select the gallery [default to `Icons.collections`] | IconData
 IconData |
-| `modalOptions.galleryText` | The gallery label that indicates to selects the gallery [defaults to `Text` > "gallery"] | Widget |
+| `modalOptions.galleryText` | The gallery label that indicates to select the gallery [defaults to `Text` > "gallery"] | Widget |
+| `modalOptions.gallerySize` | The gallery icon size that indicates to select the gallery [defaults to `40`] | Widget |
+| `modalOptions.galleryColor` | The gallery icon color that indicates to select the gallery [defaults to `primaryColor`] | Widget |
+
+Or, in case you want to add your own modal, you can make'it using `imagePickerModal` like as follow:
+```
+imagePickerModal: (context, selectCamera, selectGallery) => BottomSheet(
+    onClosing: () => print('Nothing'),
+    backgroundColor: Colors.red,
+    builder: (context) => Padding(
+    padding: const EdgeInsets.all(16),
+    child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+        ElevatedButton(onPressed: () => selectCamera(context), child: Text("Camera")),
+        SizedBox(height: 20),
+        ElevatedButton(onPressed: () => selectGallery(context), child: Text("Galeria")),
+        ],
+    ),
+    ),
+),
+```
 
 ### Image Picker Options
 | Property | Description | Type |

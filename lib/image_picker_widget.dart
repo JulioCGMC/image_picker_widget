@@ -11,6 +11,7 @@ part 'components/modal_image_selector.dart';
 part 'enum/image_picker_widget_shape.dart';
 part 'models/cropped_image_options.dart';
 part 'models/image_picker_options.dart';
+part 'models/bottom_sheet.dart';
 part 'models/modal_options.dart';
 part 'functions/crop_image.dart';
 part 'functions/change_image.dart';
@@ -43,6 +44,8 @@ class ImagePickerWidget extends StatefulWidget {
   final Radius borderRadius;
   final Widget? editIcon;
   final AlignmentGeometry? iconAlignment;
+
+  final IndexedWidgetPickerBuilder? imagePickerModal;
   
   final ModalOptions? modalOptions;
 
@@ -67,6 +70,7 @@ class ImagePickerWidget extends StatefulWidget {
       this.iconAlignment,
       this.editIcon,
       this.fit,
+      this.imagePickerModal,
       this.modalOptions, 
       this.croppedImageOptions,
       this.imagePickerOptions
@@ -99,7 +103,7 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
           borderRadius: BorderRadius.all(
               (widget.shape == ImagePickerWidgetShape.circle
                   ? Radius.circular(999)
-                  : widget.borderRadius)),
+                  : widget.borderRadius),),
           image: _image()),
     ));
   }
@@ -110,7 +114,13 @@ class _ImagePickerWidgetState extends State<ImagePickerWidget> {
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
           onTap: () {
-            final modal = ModalImageSelector(widget.modalOptions);
+            Widget modal = ModalImageSelector(widget.modalOptions);
+            if (widget.imagePickerModal != null) {
+              modal = widget.imagePickerModal!(context, 
+                (context) => Navigator.of(context).pop(ImageSource.camera),
+                (context) => Navigator.of(context).pop(ImageSource.gallery)
+              );
+            }
             changeImage(
                     context,
                     modal,

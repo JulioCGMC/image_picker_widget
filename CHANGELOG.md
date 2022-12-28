@@ -1,3 +1,5 @@
+## [2.3.0] - Add new fields and new `imagePickerModal` option to modal bottom dialog.
+
 ## [2.2.2] - Add MouseRegion clicable for web usage.
 
 ## [2.2.1] - Option to change the BoxFit type.

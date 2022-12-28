@@ -48,12 +48,12 @@ class ModalImageSelector extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               Icon(modalOptions?.cameraIcon ?? Icons.camera,
-                                  size: 40,
-                                  color: Theme.of(context).primaryColor),
+                                  size: modalOptions?.cameraSize ?? 40,
+                                  color: modalOptions?.cameraColor ?? Theme.of(context).primaryColor,),
                               modalOptions?.cameraText ??
                                   Text("camera",
                                       style:
-                                          Theme.of(context).textTheme.overline)
+                                          Theme.of(context).textTheme.overline,)
                             ],
                           ),
                         ),
@@ -64,12 +64,12 @@ class ModalImageSelector extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               Icon(modalOptions?.galleryIcon ?? Icons.collections,
-                                  size: 40,
-                                  color: Theme.of(context).primaryColor),
+                                  size: modalOptions?.gallerySize ?? 40,
+                                  color: modalOptions?.galleryColor ?? Theme.of(context).primaryColor,),
                               modalOptions?.galleryText ??
                                   Text("gallery",
                                       style:
-                                          Theme.of(context).textTheme.overline)
+                                          Theme.of(context).textTheme.overline,)
                             ],
                           ),
                         )
