@@ -10,6 +10,7 @@ class CroppedImageOptions {
   final int compressQuality;
   final AndroidUiSettings? androidUiSettings;
   final IOSUiSettings? iosUiSettings;
+  final WebUiSettings? webUiSettings;
 
   CroppedImageOptions({
     this.maxWidth,
@@ -20,6 +21,7 @@ class CroppedImageOptions {
     this.compressFormat = ImageCompressFormat.jpg,
     this.compressQuality = 90,
     this.androidUiSettings,
-    this.iosUiSettings
+    this.iosUiSettings,
+    this.webUiSettings
   });
 }

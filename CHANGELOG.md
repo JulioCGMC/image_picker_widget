@@ -1,3 +1,11 @@
+## [2.2.2] - Add MouseRegion clicable for web usage.
+
+## [2.2.1] - Option to change the BoxFit type.
+
+## [2.2.0] - Change functionality for Web work on cropping image.
+
+## [2.1.2] - New Radius field and **Breaking Changes** on modal options, see docs.
+
 ## [2.1.1] - Alignment option for `editIcon`
 
 ## [2.1.0] - Update to Flutter 3

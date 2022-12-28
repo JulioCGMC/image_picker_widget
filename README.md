@@ -72,6 +72,7 @@ ______________
 | `isEditable` | Checks whether the image can be changed | bool   |
 | `shouldCrop` | defines if the image can be edited and/or croped with the defined values [bellow](#image-cropping) default to **false**. | bool   |
 | `onChange` | Case the image can be changed, this function will be called after the change. | void Function(File)   |
+| `fit` | How the image should be inscribed into the box. | BoxFit   |
 
 ## Customization (Optional)
 
@@ -80,19 +81,20 @@ ______________
 |-----------------------------|-------------------------------------------------------------------------------------------------------------|-----------------------|
 | `shape` | The shape of the widget [`square` or `circle`] | ImagePickerWidgetShape |
 | `backgroundColor` | The background of the widget [default to `Colors.grey[500]`] | Color |
+| `backgroundColor` | The radius of the `square` image [default to Radius.all(8)] | Radius |
 | `editIcon` | The widget that references the possibility of editing | Widget |
 | `iconAlignment` | Alignment option for `editIcon` | AlignmentGeometry |
 
 ### Modal image type picker
 | Property | Description | Type |
 |-----------------------------|-------------------------------------------------------------------------------------------------------------|-----------------------|
-| `modalTitle` | The title of the widget [default to `Text` > "Select:"] | Widget |
-| `modalCameraIcon` | The camera icon that selects the camera [default to `Icons.camera`] | IconData
+| `modalOptions.title` | The title of the widget [default to `Text` > "Select:"] | Widget |
+| `modalOptions.cameraIcon` | The camera icon that selects the camera [default to `Icons.camera`] | IconData
 IconData |
-| `modalCameraText` | The camera label that indicates to selects the camera [defaults to `Text` > "camera"] | Widget |
-| `modalGalleryIcon` | The gallery icon that selects the gallery [default to `Icons.collections`] | IconData
+| `modalOptions.cameraText` | The camera label that indicates to selects the camera [defaults to `Text` > "camera"] | Widget |
+| `modalOptions.galleryIcon` | The gallery icon that selects the gallery [default to `Icons.collections`] | IconData
 IconData |
-| `modalGalleryText` | The gallery label that indicates to selects the gallery [defaults to `Text` > "gallery"] | Widget |
+| `modalOptions.galleryText` | The gallery label that indicates to selects the gallery [defaults to `Text` > "gallery"] | Widget |
 
 ### Image Picker Options
 | Property | Description | Type |

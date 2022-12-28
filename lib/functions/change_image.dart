@@ -6,8 +6,13 @@ Future<File?> changeImage(BuildContext context, Widget modal, bool shouldCrop,
 ImagePickerOptions? imagePickerOptions) async {
   final ImagePicker _picker = ImagePicker();
   File? response;
-  ImageSource? type = await showModalBottomSheet<ImageSource?>(
+  ImageSource? type;
+  if (kIsWeb) {
+    type = ImageSource.gallery;
+  } else {
+    type = await showModalBottomSheet<ImageSource?>(
       context: context, builder: (context) => modal);
+  }
   if (type != null) {
     imagePickerOptions ??= ImagePickerOptions();
 

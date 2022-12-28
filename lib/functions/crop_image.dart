@@ -18,7 +18,8 @@ Future<File?> cropImage(XFile file, CroppedImageOptions? croppedImageOptions) as
       compressQuality: croppedImageOptions.compressQuality,
       uiSettings: [
         croppedImageOptions.androidUiSettings,
-        croppedImageOptions.iosUiSettings
+        croppedImageOptions.iosUiSettings,
+        croppedImageOptions.webUiSettings
       ].where((w) => w != null).toList().cast<PlatformUiSettings>(),
       // androidUiSettings: croppedImageOptions.androidUiSettings,
       // iosUiSettings: croppedImageOptions.iosUiSettings,

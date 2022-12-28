@@ -1,20 +1,8 @@
 part of image_picker_widget;
 
 class ModalImageSelector extends StatelessWidget {
-  final Widget? modalTitle;
-  final Widget? modalCameraText;
-  final Widget? modalGalleryText;
-  final IconData? modalCameraIcon;
-  final IconData? modalGalleryIcon;
-
-  const ModalImageSelector(
-      {Key? key,
-      this.modalTitle,
-      this.modalCameraText,
-      this.modalGalleryText,
-      this.modalCameraIcon,
-      this.modalGalleryIcon})
-      : super(key: key);
+  final ModalOptions? modalOptions;
+  const ModalImageSelector(this.modalOptions, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +31,7 @@ class ModalImageSelector extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  modalTitle ??
+                  modalOptions?.title ??
                       Text("Select:",
                           style: Theme.of(context).textTheme.subtitle2),
                   SizedBox(height: 5),
@@ -59,10 +47,10 @@ class ModalImageSelector extends StatelessWidget {
                           },
                           child: Column(
                             children: <Widget>[
-                              Icon(modalCameraIcon ?? Icons.camera,
+                              Icon(modalOptions?.cameraIcon ?? Icons.camera,
                                   size: 40,
                                   color: Theme.of(context).primaryColor),
-                              modalCameraText ??
+                              modalOptions?.cameraText ??
                                   Text("camera",
                                       style:
                                           Theme.of(context).textTheme.overline)
@@ -75,10 +63,10 @@ class ModalImageSelector extends StatelessWidget {
                           },
                           child: Column(
                             children: <Widget>[
-                              Icon(modalGalleryIcon ?? Icons.collections,
+                              Icon(modalOptions?.galleryIcon ?? Icons.collections,
                                   size: 40,
                                   color: Theme.of(context).primaryColor),
-                              modalGalleryText ??
+                              modalOptions?.galleryText ??
                                   Text("gallery",
                                       style:
                                           Theme.of(context).textTheme.overline)
