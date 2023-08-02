@@ -1,3 +1,7 @@
+## [2.4.1] - Add new static function for separated use of image option modal.
+
+## [2.4.0] - Upgrade to newer versions of image_picker and image_cropper.
+
 ## [2.3.0] - Add new fields and new `imagePickerModal` option to modal bottom dialog.
 
 ## [2.2.2] - Add MouseRegion clicable for web usage.

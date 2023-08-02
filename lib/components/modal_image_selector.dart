@@ -33,7 +33,7 @@ class ModalImageSelector extends StatelessWidget {
                 children: <Widget>[
                   modalOptions?.title ??
                       Text("Select:",
-                          style: Theme.of(context).textTheme.subtitle2),
+                          style: Theme.of(context).textTheme.titleSmall),
                   SizedBox(height: 5),
                   FractionallySizedBox(
                     widthFactor: 1.2 / 2,
@@ -53,7 +53,7 @@ class ModalImageSelector extends StatelessWidget {
                               modalOptions?.cameraText ??
                                   Text("camera",
                                       style:
-                                          Theme.of(context).textTheme.overline,)
+                                          Theme.of(context).textTheme.labelSmall,)
                             ],
                           ),
                         ),
@@ -69,7 +69,7 @@ class ModalImageSelector extends StatelessWidget {
                               modalOptions?.galleryText ??
                                   Text("gallery",
                                       style:
-                                          Theme.of(context).textTheme.overline,)
+                                          Theme.of(context).textTheme.labelSmall,)
                             ],
                           ),
                         )
