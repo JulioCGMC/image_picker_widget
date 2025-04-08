@@ -10,16 +10,16 @@ class ModalImageSelector extends StatelessWidget {
         onClosing: () {
           return null;
         },
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(12),
             topRight: Radius.circular(12),
           ),
         ),
         builder: (_) => Container(
-              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(12),
                   topRight: Radius.circular(12),
@@ -34,7 +34,7 @@ class ModalImageSelector extends StatelessWidget {
                   modalOptions?.title ??
                       Text("Select:",
                           style: Theme.of(context).textTheme.titleSmall),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   FractionallySizedBox(
                     widthFactor: 1.2 / 2,
                     alignment: Alignment.centerLeft,
@@ -47,13 +47,18 @@ class ModalImageSelector extends StatelessWidget {
                           },
                           child: Column(
                             children: <Widget>[
-                              Icon(modalOptions?.cameraIcon ?? Icons.camera,
-                                  size: modalOptions?.cameraSize ?? 40,
-                                  color: modalOptions?.cameraColor ?? Theme.of(context).primaryColor,),
+                              Icon(
+                                modalOptions?.cameraIcon ?? Icons.camera,
+                                size: modalOptions?.cameraSize ?? 40,
+                                color: modalOptions?.cameraColor ??
+                                    Theme.of(context).primaryColor,
+                              ),
                               modalOptions?.cameraText ??
-                                  Text("camera",
-                                      style:
-                                          Theme.of(context).textTheme.labelSmall,)
+                                  Text(
+                                    "camera",
+                                    style:
+                                        Theme.of(context).textTheme.labelSmall,
+                                  )
                             ],
                           ),
                         ),
@@ -63,20 +68,25 @@ class ModalImageSelector extends StatelessWidget {
                           },
                           child: Column(
                             children: <Widget>[
-                              Icon(modalOptions?.galleryIcon ?? Icons.collections,
-                                  size: modalOptions?.gallerySize ?? 40,
-                                  color: modalOptions?.galleryColor ?? Theme.of(context).primaryColor,),
+                              Icon(
+                                modalOptions?.galleryIcon ?? Icons.collections,
+                                size: modalOptions?.gallerySize ?? 40,
+                                color: modalOptions?.galleryColor ??
+                                    Theme.of(context).primaryColor,
+                              ),
                               modalOptions?.galleryText ??
-                                  Text("gallery",
-                                      style:
-                                          Theme.of(context).textTheme.labelSmall,)
+                                  Text(
+                                    "gallery",
+                                    style:
+                                        Theme.of(context).textTheme.labelSmall,
+                                  )
                             ],
                           ),
                         )
                       ],
                     ),
                   ),
-                  SizedBox()
+                  const SizedBox()
                 ],
               ),
             ));

@@ -1,7 +1,8 @@
 part of image_picker_widget;
 
 /// Alters the actual image
-Future<File?> cropImage(XFile file, CroppedImageOptions? croppedImageOptions) async {
+Future<File?> cropImage(
+    XFile file, CroppedImageOptions? croppedImageOptions) async {
   File? response;
   try {
     if (croppedImageOptions == null) {
@@ -12,8 +13,6 @@ Future<File?> cropImage(XFile file, CroppedImageOptions? croppedImageOptions) as
       maxWidth: croppedImageOptions.maxWidth,
       maxHeight: croppedImageOptions.maxHeight,
       aspectRatio: croppedImageOptions.aspectRatio,
-      aspectRatioPresets: croppedImageOptions.aspectRatioPresets,
-      cropStyle: croppedImageOptions.cropStyle,
       compressFormat: croppedImageOptions.compressFormat,
       compressQuality: croppedImageOptions.compressQuality,
       uiSettings: [

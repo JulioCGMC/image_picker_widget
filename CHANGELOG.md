@@ -1,3 +1,5 @@
+## [3.0.0] - Updating flutter packages.
+
 ## [2.4.1] - Add new static function for separated use of image option modal.
 
 ## [2.4.0] - Upgrade to newer versions of image_picker and image_cropper.
@@ -22,29 +24,29 @@
 
 ## [2.0.1] - Ignore if initialImage is null or empty
 
-* Now initialImage is ignores if is empty or null for Null-safety
+- Now initialImage is ignores if is empty or null for Null-safety
+
 ## [2.0.0] - Null safety migration
 
-* Migrate to nullsafety
-* Code format changed to be more efficient in importing
+- Migrate to nullsafety
+- Code format changed to be more efficient in importing
 
 ## [1.0.4] - Ignore if initialImage is null or empty
 
-* Now initialImage is ignores if is empty or null
+- Now initialImage is ignores if is empty or null
 
 ## [1.0.3] - Update variable type
 
-* Now initialImage accepts not only File and String, but also ImageProvider type
+- Now initialImage accepts not only File and String, but also ImageProvider type
 
 ## [1.0.2] - Update Readme
 
-* Update Readme to add issue replier
+- Update Readme to add issue replier
 
 ## [1.0.1] - Update Readme
 
-* Update Readme to add an exemple and specs to the package
-
+- Update Readme to add an exemple and specs to the package
 
 ## [1.0.0] - First release
 
-* First release
+- First release
