@@ -1,3 +1,5 @@
+## [3.0.0] - Add SafeArea to BottomSheet.
+
 ## [3.0.0] - Updating flutter packages.
 
 ## [2.4.1] - Add new static function for separated use of image option modal.
