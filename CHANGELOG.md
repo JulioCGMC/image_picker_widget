@@ -1,4 +1,4 @@
-## [3.0.0] - Add SafeArea to BottomSheet.
+## [3.0.1] - Add SafeArea to BottomSheet.
 
 ## [3.0.0] - Updating flutter packages.
 
